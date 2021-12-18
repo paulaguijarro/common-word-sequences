@@ -1,6 +1,6 @@
 # Common Word Sequences
 
-Program executable from the command line that when given text(s) will return a list of the n most common three word sequences.
+Program executable from the command line that when given text(s) will return a list of the n most common x word sequences.
 
 ## Basic requirements
 
@@ -14,7 +14,7 @@ python common_word_sequences/com_word_seq.py -f docs/text-examples/origin-of-spe
 Ouput example:
 
 ```text
-~❯ python common_word_sequences/com_word_seq.py -f docs/text-examples/origin-of-species.txt
+❯ python common_word_sequences/com_word_seq.py -f docs/text-examples/origin-of-species.txt
 
 Processing text...
 
@@ -131,7 +131,7 @@ Processing text...
 Install python requirements:
 
 ```bash
-python -m venv venv # Create a virtual environment
+python3 -m venv venv # Create a virtual environment
 source venv/bin/activate; pip install -r requirements.txt # Install requirements
 ```
 
@@ -183,8 +183,10 @@ echo "word1 word2 word2" | docker run -i common_word_sequences
 Install python test requirements:
 
 ```bash
-python -m venv venv # Create a virtual environment
-source venv/bin/activate; pip install -r common_word_sequences/tests/requirements.txt
+python3 -m venv venv # Create a virtual environment
+source venv/bin/activate
+pip install -r requirements.txt # Install requirements
+pip install -r common_word_sequences/tests/requirements.txt
 ```
 
 Run the test suite and see the coverage report:
@@ -239,7 +241,7 @@ Not issues known at this time.
 
 ### Docker
 
-There is a [Dockerfile](Dockerfile) for building the image. Text file examples for testing have been copied to the Docker image for testing proposes.
+There is a [Dockerfile](Dockerfile) for building the image. Text file examples are attached to the Docker image for testing purposes.
 
 For building the image:
 
@@ -271,7 +273,7 @@ Concurrent processing of multiple files has not been implemented for this iterat
 
 Considering performance, changed from `zip` to `nltk ngrams` library.
 
-From 3.06 minutes using zip to 2.27 minutes using ngrams:
+From 3.06 minutes using zip to 2.37 minutes using ngrams:
 
 ```text
 ~❯ python common_word_sequences/com_word_seq.py -t 10 -f big-file.txt # Using zip
