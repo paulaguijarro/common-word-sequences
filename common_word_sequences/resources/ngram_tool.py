@@ -57,6 +57,7 @@ class NgramTool:
     def process(self, text: str) -> None:
         print(f"\n{Color.INFO}Processing text...{Color.RESET}")
         text = clean_text(text)
-        top_ngrams = self._top_word_sequences(text.split())
+        text = [word.strip("'") for word in text.split()] # split text and remove leading/trailing single quotes
+        top_ngrams = self._top_word_sequences(text)
         text = None  # free up memory
         self._pretty_results(top_ngrams)
